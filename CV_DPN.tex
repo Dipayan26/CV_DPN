@@ -8,21 +8,40 @@
 % \moderncvstyle{oldstyle}   % or casual, fancy, oldstyle
 
 
-\moderncvcolor{blue}
-% \moderncvcolor{orange}    % or green, red, purple, grey, black  
+\moderncvcolor{black}
+% \moderncvcolor{orange}    % or green, red, purple, grey, black
 
+% \renewcommand{\namefont}{\Huge\bfseries\color{black}}
+% \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
 \usepackage[scale=0.85, top=1.5cm, bottom=1.5cm]{geometry}
 \usepackage{multicol}
+% \usepackage{mathptmx}   # times new roman font
+% \usepackage{palatino}                                         
+% \usepackage{fontspec}   
+\usepackage{lmodern}  
+\usepackage{fontawesome5}  
+\newcommand{\huggingfaceicon}{\raisebox{-0.2em}{\includegraphics[height=0.99em]{hf_logo.png}}}
+% \usepackage{bibentry}
+% \nobibliography*                                              
 
-% Personal info
+% Adjust main text width
+% \usepackage[scale=0.60]{geometry}   
+
+% Personal inf
 \name{Dipayan}{Sarkar}
 \address{Siliguri, West Bengal, India}{}{}
 \phone[mobile]{+91 9735490241}
 \email{dipayansarkar26@gmail.com}
 \homepage{dipayansarkar.com}
 \social[github]{Dipayan26}
-\social[linkedin]{dipayansarkar}
+\social[googlescholar][scholar.google.com/citations?user=K-zTRIEAAAAJ&hl=en]{Google Scholar}
+\social[linkedin][www.linkedin.com/in/dipayan-sarkar-b5a281179]{dipayansarkar}
+\social[orcid][orcid.org/0000-0002-0765-5689]{ORCID}
+\extrainfo{\huggingfaceicon~\href{https://huggingface.co/dipayan26}{dipayan26}}     
+% \social[huggingface][huggingface.co/dipayan26]{HuggingFace: dipayan26}
+  % \cvitem{HuggingFace}{\href{https://huggingface.co/dipayan26}{dipayan26}}
+% \photo[64pt][0.4pt]{Photo/dpn_photo.jpg}
 
 % ======================================================================
 \begin{document}
@@ -41,9 +60,9 @@
 \cventry{2022--Present}{PhD Research Scholar}{University of North Bengal}{Siliguri, India}{}{%
   Department of Bioinformatics
   \begin{itemize}
-    \item Designed and implemented deep learning architectures for sequence-based protein--protein interaction prediction.
-    \item Developed attention-based hybrid models integrating transfer learning from pretrained protein language models, trained and evaluated on large-scale biological sequence datasets.
-    \item Developed and deployed web-based platforms for model inference and protein interaction network visualization.
+    \item[\textbullet] Designed and implemented deep learning architectures for sequence-based protein--protein interaction prediction.
+    \item[\textbullet] Developed attention-based hybrid models integrating transfer learning from pretrained protein language models, trained and evaluated on large-scale biological sequence datasets.
+    \item[\textbullet] Developed and deployed web-based platforms for model inference and protein interaction network visualization.
   \end{itemize}
 }
 
@@ -72,14 +91,22 @@
 % ---------- Publications ----------
 \section{Publications}
 
+
 \cvitem{2025}{%
-  Sarkar, D., \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}, 141102.
+  Sarkar, D., \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}, 141102. \href{https://doi.org/10.1016/j.bbapap.2025.141102}{doi:10.1016/j.bbapap.2025.141102}
 }
 
 \cvitem{2022}{%
-  Sarkar, C.; Sarkar, D.; Parsad, R.; Mishra, D. Package \texttt{EGRNi}. CRAN.
+  Sarkar, C.; Sarkar, D.; Parsad, R.; Mishra, D. Package \texttt{EGRNi}. \textbf{CRAN}.
   \newline\href{https://cran.r-project.org/package=EGRNi}{\texttt{cran.r-project.org/package=EGRNi}}
 }
+% \section{Publications}
+% \nocite{sarkar2025attnseq, sarkar2022egrni}
+% \bibliographystyle{plain}
+% \renewcommand{\refname}{}        % suppress the "References" heading
+% \vspace{-2.2em}                  % remove extra space left by empty heading
+% \bibliography{ref}
+% \vspace{0.5em}
 
 % ---------- Skills ----------
 \section{Skills}
@@ -114,6 +141,17 @@
 
 \cvitem{2022}{%
   Qualified \textbf{GATE} in Life Sciences (XL)
+}
+
+
+% ---------- Grants & Computing Resources ----------
+\section{Grants \& Computing Resources}
+
+\cvitem{2025}{%
+  \textbf{IndiaAI Compute Initiative} --- Awarded GPU cloud compute (NVIDIA L4) under the IndiaAI Mission for the project \textit{Deep learning-based framework for protein-protein interaction network prediction} (Project ID: P1-S2025070964, Sep 2025 -- Aug 2026). Funded under CSIR-UGC SRF Fellowship.
+}
+\cvitem{2025}{%
+  \textbf{Google TRC (TPU Research Cloud) Award} --- Granted free access to Google Cloud TPUs (v4, v5e, v6e) for machine learning research. Project: \texttt{dpnproject1}.
 }
 
 \end{document}
