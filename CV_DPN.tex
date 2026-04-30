@@ -1,0 +1,119 @@
+%% CV_DPN.tex — Dipayan Sarkar
+\documentclass[11pt, a4paper]{moderncv}
+
+% \moderncvstyle{classic}
+\moderncvstyle{banking}   % or casual, fancy, oldstyle
+% \moderncvstyle{casual}   % or casual, fancy, oldstyle
+% \moderncvstyle{fancy}   % or casual, fancy, oldstyle
+% \moderncvstyle{oldstyle}   % or casual, fancy, oldstyle
+
+
+\moderncvcolor{blue}
+% \moderncvcolor{orange}    % or green, red, purple, grey, black  
+
+
+\usepackage[scale=0.85, top=1.5cm, bottom=1.5cm]{geometry}
+\usepackage{multicol}
+
+% Personal info
+\name{Dipayan}{Sarkar}
+\address{Siliguri, West Bengal, India}{}{}
+\phone[mobile]{+91 9735490241}
+\email{dipayansarkar26@gmail.com}
+\homepage{dipayansarkar.com}
+\social[github]{Dipayan26}
+\social[linkedin]{dipayansarkar}
+
+% ======================================================================
+\begin{document}
+
+\makecvtitle
+
+% ---------- Research Summary ----------
+\section{Research Summary}
+\cvitem{}{%
+  Currently pursuing a PhD in bioinformatics and computational biology, focused on deep learning methods for biological sequence-based prediction and generative model development. Experience includes neural network training, transfer learning with pretrained protein language models, and analysis of large-scale biological datasets. Current work involves autoregressive generative modeling of biological sequences, with ongoing exploration of diffusion-based approaches for biological data.
+}
+
+% ---------- Work Experience ----------
+\section{Work Experience}
+
+\cventry{2022--Present}{PhD Research Scholar}{University of North Bengal}{Siliguri, India}{}{%
+  Department of Bioinformatics
+  \begin{itemize}
+    \item Designed and implemented deep learning architectures for sequence-based protein--protein interaction prediction.
+    \item Developed attention-based hybrid models integrating transfer learning from pretrained protein language models, trained and evaluated on large-scale biological sequence datasets.
+    \item Developed and deployed web-based platforms for model inference and protein interaction network visualization.
+  \end{itemize}
+}
+
+% ---------- Education ----------
+\section{Education}
+
+\cventry{Expected March 2027}{Ph.D. in Bioinformatics}{University of North Bengal}{India}{}{%
+  Advisor: Dr.\ Chiranjib Sarkar\\
+  Focus: Deep learning-based frameworks for protein--protein interaction network prediction.
+}
+
+\cventry{2021}{M.Sc. in Botany}{University of North Bengal}{India}{77.25\% -- First Class}{%
+  Specialization: Biochemistry
+}
+
+\cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% -- First Class}{}
+
+\cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
+  WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
+}
+
+\cventry{2014}{Secondary (Class X)}{Haldibari High School (H.S.)}{West Bengal}{91.58\% -- First Class}{%
+  WBBSE | Subjects: Mathematics, Physical Science, Life Science, History, Geography, English, Bengali
+}
+
+% ---------- Publications ----------
+\section{Publications}
+
+\cvitem{2025}{%
+  Sarkar, D., \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}, 141102.
+}
+
+\cvitem{2022}{%
+  Sarkar, C.; Sarkar, D.; Parsad, R.; Mishra, D. Package \texttt{EGRNi}. CRAN.
+  \newline\href{https://cran.r-project.org/package=EGRNi}{\texttt{cran.r-project.org/package=EGRNi}}
+}
+
+% ---------- Skills ----------
+\section{Skills}
+
+\cvitem{Programming}{Python (PyTorch, HuggingFace), R (CRAN package development), C (basic)}
+\cvitem{Deep Learning}{Transformers, attention mechanisms, sequence modeling, transfer learning with pretrained language models}
+\cvitem{Generative AI}{Autoregressive sequence generation, diffusion-based approaches, probabilistic sequence modeling for biological data}
+\cvitem{Scalable Training}{GPU-based training, large-scale sequence datasets, parallel training on HPC environments}
+\cvitem{Bioinformatics}{Biological sequence analysis, sequence-only protein--protein interaction prediction, generative modeling of biological sequences}
+\cvitem{Data \& Viz}{NumPy, Pandas, Matplotlib, Seaborn}
+\cvitem{Deployment}{Docker, Flask, FastAPI, Linux server deployment, model-backed web applications}
+
+% ---------- Software & Tools ----------
+\section{Software \& Tools}
+
+\cvitem{AttnSeq-PPI}{%
+  Deep learning-based protein--protein interaction prediction platform.
+  \newline\href{https://compbiosysnbu.in/attnseqppi/}{\texttt{compbiosysnbu.in/attnseqppi/}}
+}
+
+\cvitem{ARACoFusion-PPI}{%
+  Arabidopsis-specific PPI prediction and network analysis tool.
+  \newline\href{https://aracofusion.compbiosysnbu.in/}{\texttt{aracofusion.compbiosysnbu.in/}}
+}
+
+% ---------- Awards & Certificates ----------
+\section{Awards \& Certificates}
+
+\cvitem{2021}{%
+  Qualified \textbf{CSIR-NET (JRF)} in Life Sciences --- June 2021, \textbf{All India Rank: 216}
+}
+
+\cvitem{2022}{%
+  Qualified \textbf{GATE} in Life Sciences (XL)
+}
+
+\end{document}
