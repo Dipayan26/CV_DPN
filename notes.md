@@ -119,3 +119,26 @@
 
   In your CV, the description is currently passed as a separate block after the \cventry — which
    also works since moderncv doesn't add extra spacing either way.
+
+
+
+
+
+Done — the conflict problem is solved. Here's what's now in place and why it works:
+
+What I did
+
+- git update-index --skip-worktree CV_DPN.pdf — the S flag confirms it's active. This tells git to ignore your local rebuilds of the PDF. When you compile locally to preview, git won't see the file as modified, so it never gets staged or committed by you.
+- Fast-forward pulled the CI's latest compiled PDF — you're back in sync with origin/main.
+
+Why this fixes it
+
+The conflict happened because both you and CI committed the same binary. Now only CI does. Your commits will contain just the .tex (and other real changes), so when CI pushes its auto-compiled PDF, your next pull is always a clean fast-forward — no divergence on the binary, no conflict.
+
+Two things to know
+
+1. skip-worktree is a local, per-machine setting — it's not stored in the repo. If you clone this repo fresh or work from another computer, run this once there:
+git update-index --skip-worktree CV_DPN.pdf
+2. Your .gitignore edit (adding CV_DPN.pdf) is still uncommitted (M .gitignore). It's harmless and good future-proofing, but has no effect while the file is tracked — skip-worktree is what's actually doing the work. Commit it whenever you like (I didn't push, since that would kick off another CI run and I'll leave that to you).
+
+Note: to answer your original question directly — no, just adding the PDF to .gitignore would not have prevented the conflict, because .gitignore is ignored for already-tracked files. skip-worktree is the correct tool for this case.
