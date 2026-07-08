@@ -11,6 +11,10 @@
 \moderncvcolor{black}
 % \moderncvcolor{orange}    % or green, red, purple, grey, black
 
+% Force first name and last name to the same color (keep last name bold)
+\renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
+\renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
+
 % \renewcommand{\namefont}{\Huge\bfseries\color{black}}
 % \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
@@ -80,25 +84,37 @@
 
 \cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% -- First Class}{}
 
-\cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
-  WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
-}
+% \cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
+%   WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
+% }
 
-\cventry{2014}{Secondary (Class X)}{Haldibari High School (H.S.)}{West Bengal}{91.58\% -- First Class}{%
-  WBBSE | Subjects: Mathematics, Physical Science, Life Science, History, Geography, English, Bengali
-}
+% \cventry{2014}{Secondary (Class X)}{Haldibari High School (H.S.)}{West Bengal}{91.58\% -- First Class}{%
+%   WBBSE | Subjects: Mathematics, Physical Science, Life Science, History, Geography, English, Bengali
+% }
 
 % ---------- Publications ----------
 \section{Publications}
 
 
+\cvitem{2026}{%
+  \textbf{Sarkar, D.}, Bardhan, K., \& Sarkar, C. Deep-Interact Studio: An Interactive Deep Learning Model Building Platform for Biomolecular Interaction Prediction. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.07.02.736034}{doi:10.64898/2026.07.02.736034}
+}
+
+\cvitem{2026}{%
+  \textbf{Sarkar, D.}, \& Sarkar, C. MoE-Bind: Guiding De Novo Protein Binder Generation with Sparse Experts. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.06.13.732043}{doi:10.64898/2026.06.13.732043}
+}
+
+\cvitem{2026}{%
+  \textbf{Sarkar, D.}, \& Sarkar, C. ARACoFusion: Uncertainty-aware calibrated deep learning for protein-protein interaction network prediction in \textit{Arabidopsis thaliana}. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.05.22.727120}{doi:10.64898/2026.05.22.727120}
+}
+
 \cvitem{2025}{%
-  Sarkar, D., \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}, 141102. \href{https://doi.org/10.1016/j.bbapap.2025.141102}{doi:10.1016/j.bbapap.2025.141102}
+  \textbf{Sarkar, D.}, \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textbf{\textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}}, 141102. \href{https://doi.org/10.1016/j.bbapap.2025.141102}{doi:10.1016/j.bbapap.2025.141102}
 }
 
 \cvitem{2022}{%
-  Sarkar, C.; Sarkar, D.; Parsad, R.; Mishra, D. Package \texttt{EGRNi}. \textbf{CRAN}.
-  \newline\href{https://cran.r-project.org/package=EGRNi}{\texttt{cran.r-project.org/package=EGRNi}}
+  Sarkar, C., \textbf{Sarkar, D.}, Parsad, R., \& Mishra, D. Package \texttt{EGRNi}. \textbf{CRAN}.
+  \newline\href{https://cran.r-project.org/package=EGRNi}{cran.r-project.org/package=EGRNi}
 }
 % \section{Publications}
 % \nocite{sarkar2025attnseq, sarkar2022egrni}
