@@ -15,6 +15,12 @@
 \renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
 \renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
 
+% Add vertical space between the name and the address/contact links in the header
+\makeatletter
+\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[0.6em]\addressfont\color{addresscolor}}{}{%
+  \PackageWarning{CV_DPN}{Could not patch \string\makehead\space for name spacing}}
+\makeatother
+
 % \renewcommand{\namefont}{\Huge\bfseries\color{black}}
 % \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
@@ -125,6 +131,7 @@
 % \vspace{0.5em}
 
 % ---------- Skills ----------
+\newpage
 \section{Skills}
 
 \cvitem{Programming}{Python (PyTorch, HuggingFace), R (CRAN package development), C (basic)}
@@ -137,6 +144,11 @@
 
 % ---------- Software & Tools ----------
 \section{Software \& Tools}
+
+\cvitem{Deep-Interact Studio}{%
+  Interactive web platform for building, training, and comparing custom deep learning models for protein--protein, drug--target, RNA--protein, and protein--DNA interaction prediction, with integrated interpretability.
+  \newline\href{https://deepinteract.compbiosysnbu.in/}{\texttt{deepinteract.compbiosysnbu.in/}}
+}
 
 \cvitem{AttnSeq-PPI}{%
   Deep learning-based protein--protein interaction prediction platform.
