@@ -15,17 +15,56 @@
 \renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
 \renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
 
-% Add vertical space between the name and the address/contact links in the header
-\makeatletter
-\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[0.6em]\addressfont\color{addresscolor}}{}{%
-  \PackageWarning{CV_DPN}{Could not patch \string\makehead\space for name spacing}}
-\makeatother
-
 % \renewcommand{\namefont}{\Huge\bfseries\color{black}}
 % \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
 \usepackage[scale=0.85, top=1.5cm, bottom=1.5cm]{geometry}
 \usepackage{multicol}
+\usepackage{tabularx}
+
+% ----------------------------------------------------------------------
+% Custom header: contact details laid out as a left-justified 3-column
+% grid instead of moderncv's default centered, auto-wrapped bullet line
+% (which got ragged/messy once enough contact items were added). Pulls
+% from the same \phone/\email/\homepage/\social storage as stock
+% moderncv (via collectionloop), so those commands stay the single
+% source of truth; only the arrangement changes. \hfinfo and
+% \secondemail (defined next to \name below) are this CV's two extra
+% fields beyond what moderncv's built-in commands support.
+% ----------------------------------------------------------------------
+\newcounter{cvheadcol}
+\newcommand*{\cvheaditem}[1]{%
+  \ifnum\value{cvheadcol}=0 #1\else &#1\fi
+  \stepcounter{cvheadcol}%
+  \ifnum\value{cvheadcol}=3 \\[0.6em]\setcounter{cvheadcol}{0}\fi}
+
+\makeatletter
+\renewcommand*{\makehead}{%
+  \setlength{\makeheaddetailswidth}{0.8\textwidth}%
+  \hfil%
+  \parbox{\makeheaddetailswidth}{%
+    \centering
+    \firstnamestyle{\@firstname\ }\lastnamestyle{\@lastname}%
+    \ifthenelse{\equal{\@title}{}}{}{\titlestyle{~|~\@title}}%
+    \if@details
+      \\[0.6em]%
+      \addressfont\color{addresscolor}%
+      \ifthenelse{\isundefined{\@addressstreet}}{}{%
+        \@addressstreet%
+        \ifthenelse{\equal{\@addresscity}{}}{}{~--~\@addresscity}%
+        \ifthenelse{\equal{\@addresscountry}{}}{}{~--~\@addresscountry}%
+        \\[0.6em]}%
+      \setcounter{cvheadcol}{0}%
+      \begin{tabularx}{0.82\makeheaddetailswidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+      \collectionloop{phones}{\cvheaditem{\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+      \ifthenelse{\isundefined{\@email}}{}{\cvheaditem{\emailsymbol\emaillink{\@email}}}%
+      \ifthenelse{\isundefined{\@homepage}}{}{\cvheaditem{\homepagesymbol\ifthenelse{\equal{\@homepageprotocol}{http}}{\httplink{\@homepage}}{\httpslink{\@homepage}}}}%
+      \collectionloop{socials}{\cvheaditem{\csname\collectionloopkey socialsymbol\endcsname\collectionloopitem}}%
+      \cvheaditem{\hfinfo}%
+      \cvheaditem{\secondemail}%
+      \end{tabularx}%
+    \fi}}
+\makeatother
 % \usepackage{mathptmx}   # times new roman font
 % \usepackage{palatino}                                         
 % \usepackage{fontspec}   
@@ -48,7 +87,10 @@
 \social[googlescholar][scholar.google.com/citations?user=K-zTRIEAAAAJ&hl=en]{Google Scholar}
 \social[linkedin][www.linkedin.com/in/dipayan-sarkar-b5a281179]{dipayansarkar}
 \social[orcid][orcid.org/0000-0002-0765-5689]{ORCID}
-\extrainfo{\huggingfaceicon~\href{https://huggingface.co/dipayan26}{dipayan26}}     
+% Extra header fields beyond moderncv's built-in \phone/\email/\homepage/\social,
+% rendered as grid cells by the custom \makehead above.
+\newcommand*{\hfinfo}{\huggingfaceicon~\href{https://huggingface.co/dipayan26}{dipayan26}}
+\newcommand*{\secondemail}{\emailsymbol\emaillink[rs\_dipayans@nbu.ac.in]{rs_dipayans@nbu.ac.in}}
 % \social[huggingface][huggingface.co/dipayan26]{HuggingFace: dipayan26}
   % \cvitem{HuggingFace}{\href{https://huggingface.co/dipayan26}{dipayan26}}
 % \photo[64pt][0.4pt]{Photo/dpn_photo.jpg}
