@@ -17,14 +17,14 @@
 
 % Add vertical space between the name and the address/contact links in the header
 \makeatletter
-\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[0.6em]\addressfont\color{addresscolor}}{}{%
+\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[1em]\addressfont\color{addresscolor}}{}{%
   \PackageWarning{CV_DPN}{Could not patch \string\makehead\space for name spacing}}
 \makeatother
 
 % \renewcommand{\namefont}{\Huge\bfseries\color{black}}
 % \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
-\usepackage[scale=0.85, top=1.5cm, bottom=1.5cm]{geometry}
+\usepackage[scale=0.85, top=1.8cm, bottom=1.5cm]{geometry}
 \usepackage{multicol}
 % \usepackage{mathptmx}   # times new roman font
 % \usepackage{palatino}                                         
@@ -32,11 +32,7 @@
 \usepackage{lmodern}
 % fontawesome icons are provided by moderncv (fontawesome6); do not load fontawesome5 (clashes)
 \newcommand{\huggingfaceicon}{\raisebox{-0.2em}{\includegraphics[height=0.99em]{hf_logo.png}}}
-% \usepackage{bibentry}
-% \nobibliography*                                              
 
-% Adjust main text width
-% \usepackage[scale=0.60]{geometry}   
 
 % Personal inf
 \name{Dipayan}{Sarkar}
@@ -46,13 +42,10 @@
 \homepage{dipayansarkar.com}
 \social[github]{Dipayan26}
 \social[googlescholar][scholar.google.com/citations?user=K-zTRIEAAAAJ&hl=en]{Google Scholar}
-\social[linkedin][www.linkedin.com/in/dipayan-sarkar-b5a281179]{dipayansarkar}
+% \social[linkedin][www.linkedin.com/in/dipayan-sarkar-b5a281179]{dipayansarkar}
 \social[orcid][orcid.org/0000-0002-0765-5689]{ORCID}
-\extrainfo{\huggingfaceicon~\href{https://huggingface.co/dipayan26}{dipayan26}}
+\extrainfo{\huggingfaceicon~\href{https://huggingface.co/dipayan26}{HuggingFace}}
 
-% \social[huggingface][huggingface.co/dipayan26]{HuggingFace: dipayan26}
-  % \cvitem{HuggingFace}{\href{https://huggingface.co/dipayan26}{dipayan26}}
-% \photo[64pt][0.4pt]{Photo/dpn_photo.jpg}
 
 % ======================================================================
 \begin{document}
@@ -71,9 +64,9 @@
 \cventry{2022--Present}{PhD Research Scholar}{University of North Bengal}{Siliguri, India}{}{%
   Department of Bioinformatics
   \begin{itemize}
-    \item[\textbullet] Designed and implemented deep learning architectures for sequence-based protein--protein interaction prediction.
-    \item[\textbullet] Developed attention-based hybrid models integrating transfer learning from pretrained protein language models, trained and evaluated on large-scale biological sequence datasets.
-    \item[\textbullet] Developed and deployed web-based platforms for model inference and protein interaction network visualization.
+    \item[\textbullet] Deep learning architectures for sequence-based protein-protein interaction prediction using Attention-based hybrid architecture with transfer learning.
+    \item[\textbullet] Sequence based generative modeling of protein binder generation using autoregressive and diffusion-based approaches.
+    \item[\textbullet] Development of web-based platforms for model inference and protein interaction network visualization
   \end{itemize}
 }
 
@@ -82,14 +75,14 @@
 
 \cventry{Expected March 2027}{Ph.D. in Bioinformatics}{University of North Bengal}{India}{}{%
   Advisor: Dr.\ Chiranjib Sarkar\\
-  Focus: Deep learning-based frameworks for protein--protein interaction network prediction.
+  Focus: Deep learning-based frameworks for protein-protein interaction network prediction.
 }
 
-\cventry{2021}{M.Sc. in Botany}{University of North Bengal}{India}{77.25\% -- First Class}{%
+\cventry{2021}{M.Sc. in Botany}{University of North Bengal}{India}{77.25\% - First Class}{%
   Specialization: Biochemistry
 }
 
-\cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% -- First Class}{}
+\cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% - First Class}{}
 
 % \cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
 %   WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
@@ -133,15 +126,6 @@
 
 % ---------- Skills ----------
 \newpage
-\section{Skills}
-
-\cvitem{Programming}{Python (PyTorch, HuggingFace), R (CRAN package development), C (basic)}
-\cvitem{Deep Learning}{Transformers, attention mechanisms, sequence modeling, transfer learning with pretrained language models}
-\cvitem{Generative AI}{Autoregressive sequence generation, diffusion-based approaches, probabilistic sequence modeling for biological data}
-\cvitem{Scalable Training}{GPU-based training, large-scale sequence datasets, parallel training on HPC environments}
-\cvitem{Bioinformatics}{Biological sequence analysis, sequence-only protein--protein interaction prediction, generative modeling of biological sequences}
-\cvitem{Data \& Viz}{NumPy, Pandas, Matplotlib, Seaborn}
-\cvitem{Deployment}{Docker, Flask, FastAPI, Linux server deployment, model-backed web applications}
 
 % ---------- Software & Tools ----------
 \section{Software \& Tools}
@@ -156,16 +140,29 @@
   \newline\href{https://compbiosysnbu.in/attnseqppi/}{\texttt{compbiosysnbu.in/attnseqppi/}}
 }
 
-\cvitem{ARACoFusion-PPI}{%
-  Arabidopsis-specific PPI prediction and network analysis tool.
-  \newline\href{https://aracofusion.compbiosysnbu.in/}{\texttt{aracofusion.compbiosysnbu.in/}}
-}
+% \cvitem{ARACoFusion-PPI}{%
+%   Arabidopsis-specific PPI prediction and network analysis tool.
+%   \newline\href{https://aracofusion.compbiosysnbu.in/}{\texttt{aracofusion.compbiosysnbu.in/}}
+% }
+
+
+
+\section{Skills}
+
+\cvitem{Programming}{Python (PyTorch), R, C }
+\cvitem{Deep Learning}{Transformers, attention mechanisms, transfer learning.}
+\cvitem{Generative AI}{Autoregressive, diffusion-, and flow-based generative models for de novo protein design.}
+\cvitem{Scalable Training}{GPU-based training, parallel training on HPC environments}
+\cvitem{Bioinformatics}{Biological sequence analysis, protein-protein interaction prediction, biomolecular network analysis}
+\cvitem{Data \& Viz}{NumPy, Pandas, Matplotlib, Seaborn}
+\cvitem{Deployment}{Docker, Flask, FastAPI, Linux server deployment, model-backed web applications}
+
 
 % ---------- Awards & Certificates ----------
 \section{Awards \& Certificates}
 
 \cvitem{2021}{%
-  Qualified \textbf{CSIR-NET (JRF)} in Life Sciences --- June 2021, \textbf{All India Rank: 216}
+  Qualified \textbf{CSIR-NET (JRF)} in Life Sciences - June 2021, \textbf{All India Rank: 216}
 }
 
 \cvitem{2022}{%
@@ -177,10 +174,10 @@
 \section{Grants \& Computing Resources}
 
 \cvitem{2025}{%
-  \textbf{IndiaAI Compute Initiative} --- Awarded GPU cloud compute (NVIDIA L4) under the IndiaAI Mission for the project \textit{Deep learning-based framework for protein-protein interaction network prediction} (Project ID: P1-S2025070964, Sep 2025 -- Aug 2026). Funded under CSIR-UGC SRF Fellowship.
+  \textbf{IndiaAI Compute Initiative} - Awarded GPU cloud compute (NVIDIA L4) under the IndiaAI Mission for the project \textit{Deep learning-based framework for protein-protein interaction network prediction} (Project ID: P1-S2025070964, Sep 2025 -- Aug 2026). Funded under CSIR-UGC SRF Fellowship.
 }
 \cvitem{2025}{%
-  \textbf{Google TRC (TPU Research Cloud) Award} --- Granted free access to Google Cloud TPUs (v4, v5e, v6e) for machine learning research.
+  \textbf{Google TRC (TPU Research Cloud) Award} - Granted free access to Google Cloud TPUs (v4, v5e, v6e) for machine learning research.
 }
 
 \end{document}
