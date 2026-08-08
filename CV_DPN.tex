@@ -1,5 +1,5 @@
 %% CV_DPN.tex — Dipayan Sarkar
-\documentclass[11pt, a4paper]{moderncv}
+\documentclass[10pt, a4paper]{moderncv}
 
 % \moderncvstyle{classic}
 \moderncvstyle{banking}   % or casual, fancy, oldstyle
@@ -12,27 +12,78 @@
 % \moderncvcolor{orange}    % or green, red, purple, grey, black
 
 % Force first name and last name to the same color (keep last name bold)
-\renewcommand*{\firstnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
-\renewcommand*{\lastnamestyle}[1]{{\fontsize{34}{36}\bfseries\upshape\color{black}#1}}
+\renewcommand*{\firstnamestyle}[1]{{\fontsize{23}{25}\bfseries\upshape\color{black}#1}}
+\renewcommand*{\lastnamestyle}[1]{{\fontsize{23}{25}\bfseries\upshape\color{black}#1}}
 
 % Add vertical space between the name and the address/contact links in the header
 \makeatletter
-\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[1em]\addressfont\color{addresscolor}}{}{%
+\patchcmd{\makehead}{\\\addressfont\color{addresscolor}}{\\[0.35em]\addressfont\color{addresscolor}}{}{%
   \PackageWarning{CV_DPN}{Could not patch \string\makehead\space for name spacing}}
 \makeatother
 
 % \renewcommand{\namefont}{\Huge\bfseries\color{black}}
 % \renewcommand{\titlefont}{\large\mdseries\upshape\color{black}}
 
-\usepackage[scale=0.85, top=1.8cm, bottom=1.5cm]{geometry}
+\usepackage[scale=0.93, top=0.9cm, bottom=0.9cm]{geometry}
+\setlength{\emergencystretch}{2em}   % let long DOIs stretch rather than overflow
 \usepackage{multicol}
+\usepackage{enumitem}
 % \usepackage{mathptmx}   # times new roman font
-% \usepackage{palatino}                                         
-% \usepackage{fontspec}   
+% \usepackage{palatino}
+% \usepackage{fontspec}
 \usepackage{lmodern}
 % fontawesome icons are provided by moderncv (fontawesome6); do not load fontawesome5 (clashes)
 \newcommand{\huggingfaceicon}{\raisebox{-0.2em}{\includegraphics[height=0.99em]{hf_logo.png}}}
 
+% ---------- Compact layout: tighten moderncv's default vertical spacing ----------
+\makeatletter
+
+% Shrink the large gap moderncv leaves between the header block and the first section
+\patchcmd{\makecvhead}{\vspace{2.5em}}{\vspace{0.4em}}{}{%
+  \PackageWarning{CV_DPN}{Could not patch \string\makecvhead\space post-header spacing}}
+
+% Section headings: default is 2.5ex before / 1ex after
+\RenewDocumentCommand{\section}{sm}{%
+  \par\addvspace{1.1ex}%
+  \phantomsection{}%
+  \addcontentsline{toc}{section}{#2}%
+  \if@left\else\if@fullrules\else\if@mixedrules\else%
+    \sectionrule\fi\fi\fi%
+  \strut\sectionstyle{#2}%
+  \if@fullrules%
+    \sectionrule%
+  \else\if@mixedrules%
+    \sectionrule%
+  \else\if@right\else%
+    \sectionrule\fi\fi\fi%
+  \par\nobreak\addvspace{0.35ex}\@afterheading}
+
+\makeatother
+
+% Entry spacing: default optional arg is .25em for both
+\renewcommand*{\cvitem}[3][0.08em]{%
+  \ifstrempty{#2}{}{\hintstyle{#2}: }{#3}%
+  \par\addvspace{#1}}
+
+\renewcommand*{\cventry}[7][0.1em]{
+  \begin{tabular*}{\maincolumnwidth}{l@{\extracolsep{\fill}}r}%
+    \ifboolexpr{%
+      test {\ifstrempty{#4}}
+      and
+      test {\ifstrempty{#5}}}%
+      {}%
+      {{\bfseries #4} & {\bfseries #5}\\}%
+    {\itshape #3\ifstrempty{#6}{}{, #6}} & {\itshape #2}\\%
+  \end{tabular*}%
+  \ifx&#7&%
+  \else{\\%
+    \begin{minipage}{\maincolumnwidth}%
+      \small#7%
+    \end{minipage}}\fi%
+  \par\addvspace{#1}}
+
+% Tighten the bullet lists inside \cventry
+\setlist[itemize]{noitemsep, topsep=0.1em, partopsep=0pt, parsep=0pt, leftmargin=1.1em}
 
 % Personal inf
 \name{Dipayan}{Sarkar}
@@ -52,80 +103,35 @@
 
 \makecvtitle
 
-% ---------- Research Summary ----------
-\section{Research Summary}
+% ---------- Summary ----------
+\section{Summary}
 \cvitem{}{%
-  Currently pursuing a PhD in bioinformatics and computational biology, focused on deep learning methods for biological sequence-based prediction and generative model development. Experience includes neural network training, transfer learning with pretrained protein language models, and analysis of large-scale biological datasets. Current work involves autoregressive generative modeling of biological sequences, with ongoing exploration of diffusion-based approaches for biological data.
+  Works on de novo protein design with deep generative models - autoregressive and diffusion-based approaches over biological sequence data. Takes models end-to-end, from architecture design and large-scale GPU/TPU training through deployed, production inference platforms.
 }
-
-% ---------- Work Experience ----------
-\section{Work Experience}
-
-\cventry{2022--Present}{PhD Research Scholar}{University of North Bengal}{Siliguri, India}{}{%
-  Department of Bioinformatics
-  \begin{itemize}
-    \item[\textbullet] Deep learning architectures for sequence-based protein-protein interaction prediction using Attention-based hybrid architecture with transfer learning.
-    \item[\textbullet] Sequence based generative modeling of protein binder generation using autoregressive and diffusion-based approaches.
-    \item[\textbullet] Development of web-based platforms for model inference and protein interaction network visualization
-  \end{itemize}
-}
-
-% ---------- Education ----------
-\section{Education}
-
-\cventry{Expected March 2027}{Ph.D. in Bioinformatics}{University of North Bengal}{India}{}{%
-  Advisor: Dr.\ Chiranjib Sarkar\\
-  Focus: Deep learning-based frameworks for protein-protein interaction network prediction.
-}
-
-\cventry{2021}{M.Sc. in Botany}{University of North Bengal}{India}{77.25\% - First Class}{%
-  Specialization: Biochemistry
-}
-
-\cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% - First Class}{}
-
-% \cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
-%   WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
-% }
-
-% \cventry{2014}{Secondary (Class X)}{Haldibari High School (H.S.)}{West Bengal}{91.58\% -- First Class}{%
-%   WBBSE | Subjects: Mathematics, Physical Science, Life Science, History, Geography, English, Bengali
-% }
-
-% ---------- Publications ----------
-\section{Publications}
-
-
-\cvitem{2026}{%
-  \textbf{Sarkar, D.}, Bardhan, K., \& Sarkar, C. Deep-Interact Studio: An Interactive Deep Learning Model Building Platform for Biomolecular Interaction Prediction. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.07.02.736034}{doi:10.64898/2026.07.02.736034}
-}
-
-\cvitem{2026}{%
-  \textbf{Sarkar, D.}, \& Sarkar, C. MoE-Bind: Guiding De Novo Protein Binder Generation with Sparse Experts. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.06.13.732043}{doi:10.64898/2026.06.13.732043}
-}
-
-\cvitem{2026}{%
-  \textbf{Sarkar, D.}, \& Sarkar, C. ARACoFusion: Uncertainty-aware calibrated deep learning for protein-protein interaction network prediction in \textit{Arabidopsis thaliana}. \textbf{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.05.22.727120}{doi:10.64898/2026.05.22.727120}
-}
-
-\cvitem{2025}{%
-  \textbf{Sarkar, D.}, \& Sarkar, C. AttnSeq-PPI: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textbf{\textit{Biochimica et Biophysica Acta (BBA)---Proteins and Proteomics}}, 141102. \href{https://doi.org/10.1016/j.bbapap.2025.141102}{doi:10.1016/j.bbapap.2025.141102}
-}
-
-\cvitem{2022}{%
-  Sarkar, C., \textbf{Sarkar, D.}, Parsad, R., \& Mishra, D. Package \texttt{EGRNi}. \textbf{CRAN}.
-  \newline\href{https://cran.r-project.org/package=EGRNi}{cran.r-project.org/package=EGRNi}
-}
-% \section{Publications}
-% \nocite{sarkar2025attnseq, sarkar2022egrni}
-% \bibliographystyle{plain}
-% \renewcommand{\refname}{}        % suppress the "References" heading
-% \vspace{-2.2em}                  % remove extra space left by empty heading
-% \bibliography{ref}
-% \vspace{0.5em}
 
 % ---------- Skills ----------
-\newpage
+\section{Skills}
+
+\cvitem{Deep Learning}{Transformers, attention mechanisms, transfer learning, sequence modeling}
+\cvitem{Generative AI}{Autoregressive, diffusion-, and flow-based generative models for de novo protein design}
+\cvitem{Programming}{Python (PyTorch), R (published CRAN package), C}
+\cvitem{Scalable Training}{GPU-based training, TPU (v4/v5e/v6e), parallel training on HPC environments}
+\cvitem{Deployment}{Docker, Flask, FastAPI, Linux server deployment, model-backed web applications}
+\cvitem{Data \& Viz}{NumPy, Pandas, Matplotlib, Seaborn}
+\cvitem{Domain}{Biological sequence analysis, protein-protein interaction prediction, biomolecular network analysis}
+
+% ---------- Experience ----------
+\section{Experience}
+
+\cventry{2022--Present}{Machine Learning Researcher (PhD Research Scholar)}{University of North Bengal}{Siliguri, India}{}{%
+  Department of Bioinformatics
+  \begin{itemize}
+    \item[\textbullet] Deep learning architectures for sequence-based protein-protein interaction prediction using attention-based hybrid architecture with transfer learning; published in \textit{BBA - Proteins and Proteomics}.
+    \item[\textbullet] Sequence based generative modeling of protein binder generation using autoregressive and diffusion-based approaches, including a sparse mixture-of-experts routing framework.
+    \item[\textbullet] Development and production deployment of web-based platforms for model inference and protein interaction network visualization.
+    \item[\textbullet] Secured competitive compute grants (IndiaAI NVIDIA L4 cloud, Google TRC TPUs) and ran training workloads across both.
+  \end{itemize}
+}
 
 % ---------- Software & Tools ----------
 \section{Software \& Tools}
@@ -140,44 +146,69 @@
   \newline\href{https://compbiosysnbu.in/attnseqppi/}{\texttt{compbiosysnbu.in/attnseqppi/}}
 }
 
+\cvitem{EGRNi}{%
+  R package for ensemble gene regulatory network inference, published on CRAN.
+  \newline\href{https://cran.r-project.org/package=EGRNi}{\texttt{cran.r-project.org/package=EGRNi}}
+}
+
 % \cvitem{ARACoFusion-PPI}{%
 %   Arabidopsis-specific PPI prediction and network analysis tool.
 %   \newline\href{https://aracofusion.compbiosysnbu.in/}{\texttt{aracofusion.compbiosysnbu.in/}}
 % }
 
+% ---------- Education ----------
+\section{Education}
 
-
-\section{Skills}
-
-\cvitem{Programming}{Python (PyTorch), R, C }
-\cvitem{Deep Learning}{Transformers, attention mechanisms, transfer learning.}
-\cvitem{Generative AI}{Autoregressive, diffusion-, and flow-based generative models for de novo protein design.}
-\cvitem{Scalable Training}{GPU-based training, parallel training on HPC environments}
-\cvitem{Bioinformatics}{Biological sequence analysis, protein-protein interaction prediction, biomolecular network analysis}
-\cvitem{Data \& Viz}{NumPy, Pandas, Matplotlib, Seaborn}
-\cvitem{Deployment}{Docker, Flask, FastAPI, Linux server deployment, model-backed web applications}
-
-
-% ---------- Awards & Certificates ----------
-\section{Awards \& Certificates}
-
-\cvitem{2021}{%
-  Qualified \textbf{CSIR-NET (JRF)} in Life Sciences - June 2021, \textbf{All India Rank: 216}
+\cventry{Expected March 2027}{Ph.D. in Bioinformatics}{University of North Bengal}{India}{}{%
+  Deep learning-based frameworks for protein-protein interaction network prediction. Advisor: Dr.\ Chiranjib Sarkar.
 }
 
-\cvitem{2022}{%
-  Qualified \textbf{GATE} in Life Sciences (XL)
-}
+\cventry{2021}{M.Sc. in Botany (Biochemistry)}{University of North Bengal}{India}{77.25\% - First Class}{}
 
+\cventry{2019}{B.Sc. (Hons.) in Botany}{Ananda Chandra College, University of North Bengal}{India}{63.50\% - First Class}{}
 
-% ---------- Grants & Computing Resources ----------
-\section{Grants \& Computing Resources}
+% \cventry{2016}{Higher Secondary (Class XII)}{Haldibari High School (H.S.)}{West Bengal}{80.00\% -- First Class}{%
+%   WBCHSE | Subjects: Physics, Chemistry, Mathematics, Biology, English, Bengali
+% }
+
+% \cventry{2014}{Secondary (Class X)}{Haldibari High School (H.S.)}{West Bengal}{91.58\% -- First Class}{%
+%   WBBSE | Subjects: Mathematics, Physical Science, Life Science, History, Geography, English, Bengali
+% }
+
+% ---------- Selected Publications ----------
+\section{Selected Publications}
 
 \cvitem{2025}{%
-  \textbf{IndiaAI Compute Initiative} - Awarded GPU cloud compute (NVIDIA L4) under the IndiaAI Mission for the project \textit{Deep learning-based framework for protein-protein interaction network prediction} (Project ID: P1-S2025070964, Sep 2025 -- Aug 2026). Funded under CSIR-UGC SRF Fellowship.
+  \textbf{AttnSeq-PPI}: Enhancing protein-protein interaction network prediction using transfer learning-driven hybrid attention. \textit{BBA - Proteins and Proteomics}. \href{https://doi.org/10.1016/j.bbapap.2025.141102}{doi:10.1016/j.bbapap.2025.141102}
 }
+
+\cvitem{2026}{%
+  \textbf{MoE-Bind}: Guiding de novo protein binder generation with sparse experts. \textit{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.06.13.732043}{doi:10.64898/2026.06.13.732043}
+}
+
+\cvitem{2026}{%
+  \textbf{ARACoFusion}: Uncertainty-aware calibrated deep learning for protein-protein interaction network prediction. \textit{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.05.22.727120}{doi:10.64898/2026.05.22.727120}
+}
+
+\cvitem{2026}{%
+  \textbf{Deep-Interact Studio}: An interactive deep learning model building platform for biomolecular interaction prediction. \textit{bioRxiv} preprint. \href{https://doi.org/10.64898/2026.07.02.736034}{doi:10.64898/2026.07.02.736034}
+}
+
+% Full publication list is reachable via the Google Scholar link in the header
+
+% ---------- Awards & Compute Grants ----------
+\section{Awards \& Compute Grants}
+
 \cvitem{2025}{%
-  \textbf{Google TRC (TPU Research Cloud) Award} - Granted free access to Google Cloud TPUs (v4, v5e, v6e) for machine learning research.
+  \textbf{IndiaAI Compute Initiative} - NVIDIA L4 GPU cloud award under the IndiaAI Mission (Project ID: P1-S2025070964, Sep 2025 -- Aug 2026).
+}
+
+\cvitem{2025}{%
+  \textbf{Google TRC (TPU Research Cloud) Award} - Free access to Google Cloud TPUs (v4, v5e, v6e) for machine learning research.
+}
+
+\cvitem{2021--22}{%
+  \textbf{CSIR-NET (JRF)} in Life Sciences - \textbf{All India Rank: 216}; \textbf{GATE} in Life Sciences (XL) - Qualified
 }
 
 \end{document}
