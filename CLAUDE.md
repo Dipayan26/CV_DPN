@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A LaTeX-source CV/resume for Dipayan Sarkar (PhD researcher, computational biology, University of North Bengal), built with the `moderncv` class. The compiled PDF is published via GitHub Pages at `https://dipayan26.github.io/CV_DPN/CV_DPN.pdf`.
+A LaTeX-source CV/resume for Dipayan Sarkar (PhD researcher, computational biology, University of North Bengal), built with the `moderncv` class. The compiled PDF is published via GitHub Pages at `https://dipayansarkar.com/CV_DPN/CV_DPN.pdf`.
 
 ## The one file that matters
 
