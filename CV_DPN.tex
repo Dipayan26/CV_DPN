@@ -26,6 +26,7 @@
 
 \usepackage[scale=0.85, top=1.8cm, bottom=1.5cm]{geometry}
 \usepackage{multicol}
+\usepackage{lastpage}   % reliable \pageref{LastPage}; moderncv's own lastpage label never fires here
 % \usepackage{mathptmx}   # times new roman font
 % \usepackage{palatino}                                         
 % \usepackage{fontspec}   
@@ -63,6 +64,17 @@
 \begin{document}
 
 \makecvtitle
+
+% Running footer: name (left) + page number (right) on continuation pages only.
+% moderncv puts its page number inside \fancypagestyle{plain}, so both fields must be
+% redefined together here -- a bare \fancyfoot[l] would drop the page number.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[l]{\ifnum\value{page}>1\relax
+    \color{color2}\pagenumberfont\strut Dipayan Sarkar\fi}%
+  \fancyfoot[r]{\color{color2}\pagenumberfont\strut\thepage/\protect\NoHyper\pageref{LastPage}\protect\endNoHyper}%
+}
+\pagestyle{plain}
 
 % ---------- Research Summary ----------
 \section{Research Summary}
